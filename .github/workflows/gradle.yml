@@ -30,8 +30,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
     - name: Build with Gradle
-      uses: ./gradlew bootJar
+      run: ./gradlew clean build
 
     - name: Docker Build and Push
       run: |
